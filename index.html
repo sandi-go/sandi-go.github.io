@@ -1,0 +1,341 @@
+```html name=index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sandeep Kumar | Space-Themed Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Space-Themed Background */
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      color: #eaf6ff;
+      background: radial-gradient(ellipse at bottom, #23243a 0%, #0d102c 100%);
+      min-height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1465101178521-c1a4c21a2307?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Overlay for dark space */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, rgba(14,18,41,0.85) 65%, rgba(26,29,53,0.95) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    main {
+      max-width: 680px;
+      margin: 48px auto 32px auto;
+      background: rgba(22, 28, 54, 0.93);
+      border-radius: 24px;
+      box-shadow: 0 8px 40px 0 rgba(0,0,0,0.28), 0 1.5px 0 #5499d9 inset;
+      padding: 40px 36px 32px 36px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(2px);
+    }
+
+    /* Decorative Star Elements */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      z-index: 0;
+      animation: twinkle 2.5s infinite alternate;
+    }
+    .star:nth-child(1) { top: 20px; left: 90px; width: 2px; height: 2px; animation-delay: 0s; }
+    .star:nth-child(2) { top: 120px; left: 380px; width: 3px; height: 3px; animation-delay: 1s; }
+    .star:nth-child(3) { top: 300px; left: 30px; width: 1.5px; height: 1.5px; animation-delay: 2s; }
+    .star:nth-child(4) { top: 400px; left: 600px; width: 2.5px; height: 2.5px; animation-delay: 1.5s; }
+    .star:nth-child(5) { top: 520px; left: 170px; width: 2px; height: 2px; animation-delay: 2.2s; }
+
+    @keyframes twinkle {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .name {
+      font-size: 2.6rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: #78b0f9;
+      margin-bottom: 8px;
+      text-shadow: 0 0 16px #234c83;
+    }
+    .contact {
+      font-size: 1.1rem;
+      color: #eaf6ff;
+      opacity: 0.87;
+      margin-bottom: 4px;
+    }
+    .contact a {
+      color: #8ad4ff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact a:hover {
+      color: #f8e3ff;
+      text-decoration: underline;
+    }
+    .divider {
+      border: 0;
+      border-top: 1.5px dashed #6a72a3;
+      margin: 28px 0 22px 0;
+      opacity: 0.45;
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: #8ad4ff;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      text-shadow: 0 0 6px #234c8344;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: '✦';
+      color: #f6e05e;
+      font-size: 1rem;
+      margin-right: 0.5em;
+    }
+
+    ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+    ul.skills-list > li {
+      margin-bottom: 7px;
+      list-style-type: '🚀 ';
+      color: #eaf6ff;
+      font-size: 1.08rem;
+      opacity: 0.94;
+    }
+    .profiles {
+      display: flex;
+      gap: 18px;
+      margin-top: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .profile-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(90deg, #3a4269 60%, #2952b3 100%);
+      color: #f6e05e;
+      border-radius: 14px;
+      padding: 4px 12px 4px 10px;
+      font-size: 1rem;
+      font-weight: 500;
+      box-shadow: 0 0 16px #234c8333;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .profile-link:hover {
+      background: linear-gradient(90deg, #4e63a1 40%, #78b0f9 100%);
+      color: #fff;
+    }
+
+    .summary {
+      font-size: 1.12rem;
+      color: #f6e05e;
+      opacity: 0.95;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .job-title {
+      font-weight: 600;
+      color: #8ad4ff;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .company {
+      font-size: 1.05rem;
+      color: #f6e05e;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .location {
+      font-size: 0.98rem;
+      color: #f6e05eaa;
+      margin-bottom: 6px;
+      margin-top: -2px;
+    }
+    .exp-details {
+      margin-left: 16px;
+      font-size: 1.02rem;
+      color: #eaf6ff;
+      line-height: 1.55;
+      opacity: 0.93;
+      margin-bottom: 13px;
+    }
+    .edu-details {
+      margin-left: 14px;
+      font-size: 1.02rem;
+      color: #eaf6ff;
+      line-height: 1.5;
+      opacity: 0.93;
+      margin-bottom: 7px;
+    }
+    .achievement-list {
+      margin-left: 33px;
+      font-size: 1.01rem;
+      color: #f6e05e;
+      opacity: 0.96;
+      margin-bottom: 0;
+      margin-top: 3px;
+      list-style-type: '🌟 ';
+    }
+
+    @media (max-width: 760px) {
+      main {
+        padding: 22px 9px 18px 9px;
+        max-width: 98vw;
+      }
+      .name {
+        font-size: 2rem;
+      }
+    }
+
+    /* Floating planet at bottom right */
+    .planet {
+      position: absolute;
+      right: -45px;
+      bottom: -45px;
+      width: 98px;
+      height: 98px;
+      background: radial-gradient(circle at 36% 54%, #b4d6ff 65%, #3462a4 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 42px #234c8388, 0 0 0 8px #6a72a322;
+      border: 3px solid #78b0f9;
+      z-index: 1;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorative Stars -->
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+
+  <main>
+    <header>
+      <div class="name">Sandeep Kumar</div>
+      <div class="contact">📍 Bangalore, India</div>
+      <div class="contact">📞 <a href="tel:+917979931063">+91-7979931063</a></div>
+      <div class="contact">✉️ <a href="mailto:fsd.sandeepsharma@gmail.com">fsd.sandeepsharma@gmail.com</a></div>
+    </header>
+    <hr class="divider">
+
+    <section>
+      <div class="section-title">Skills</div>
+      <ul class="skills-list">
+        <li>Programming & Backend: Golang, Python, Django, Node.js, JavaScript</li>
+        <li>Frontend: Angular 4+, React, Next.js</li>
+        <li>Streaming & Media: WebRTC, DASH, HLS, CMAF</li>
+        <li>Infrastructure: Kubernetes, Docker, K9s, K6, CI/CD</li>
+        <li>Databases: Postgres, SingleStore</li>
+        <li>Blockchain: Hyperledger</li>
+        <li>Cloud & Networking: AWS CSPM, HTTP/QUIC</li>
+        <li>Architecture: Microservice Design, Distributed Systems, Cloud-Native Architectures</li>
+        <li>Development Methodology: Agile Development</li>
+        <li>System Design</li>
+      </ul>
+    </section>
+    <hr class="divider">
+
+    <section>
+      <div class="section-title">Portfolio and Profiles</div>
+      <div class="profiles">
+        <a class="profile-link" href="https://www.linkedin.com/in/sandeep-kumar-8b656a105/" target="_blank" title="LinkedIn">LinkedIn</a>
+        <a class="profile-link" href="https://github.com/sandi-go" target="_blank" title="GitHub">GitHub</a>
+        <a class="profile-link" href="#" target="_blank" title="Personal Website">Personal Website</a>
+      </div>
+    </section>
+    <hr class="divider">
+
+    <section>
+      <div class="section-title">Professional Summary</div>
+      <div class="summary">
+        Highly innovative Senior Software Engineer with a strong Go background. Successfully delivered scalable solutions, proficient in Kubernetes and DevOps, with expertise in problem-solving, and enhancing system reliability and data management for critical projects.
+      </div>
+    </section>
+    <hr class="divider">
+
+    <section>
+      <div class="section-title">Experience</div>
+      <div class="company">Synamedia India Pvt. Ltd.</div>
+      <div class="location">Bangalore, India</div>
+      <div class="job-title">Sr. Software Engineer (May 2023 – Present)</div>
+      <ul class="exp-details">
+        <li>Company Overview: Formerly part of CISCO</li>
+        <li>Led feature development for Synamedia VMR, a cloud DVR comprising 60+ microservices.</li>
+        <li>Enhanced DASH, HLS, CMAF playback to reduce latency by 50% and increase reliability.</li>
+        <li>Designed and implemented a geo-redundant system to protect petabytes of data.</li>
+        <li>Developed a data synchronization system for seamless migration across heterogeneous storage platforms.</li>
+        <li>Successfully completed petabyte-scale data migration with 100% data integrity in critical services.</li>
+      </ul>
+      <div class="company">Payatu</div>
+      <div class="location">Pune, India</div>
+      <div class="job-title">Software Engineer (January 2019 – May 2023)</div>
+      <ul class="exp-details">
+        <li>Built API servers using Django/DRF for a scalable fuzzing platform.</li>
+        <li>Integrated RabbitMQ and Minio, and contributed to the Angular frontend.</li>
+        <li>Developed multiple web applications using Angular, Go, Django, JavaScript, and React.</li>
+      </ul>
+    </section>
+    <hr class="divider">
+
+    <section>
+      <div class="section-title">Education</div>
+      <div class="job-title">Bachelor of Science in Computer Science and Engineering</div>
+      <div class="location">NIIT University, Neemrana – January 2019</div>
+      <ul class="edu-details">
+        <li>CGPA: 7.4</li>
+      </ul>
+      <div class="job-title">Class 11th–12th (PCM + Java)</div>
+      <div class="location">Delhi Public School, Ranchi – January 2015</div>
+      <ul class="edu-details">
+        <li>GPA: 80%</li>
+      </ul>
+      <div class="job-title">Class 10th</div>
+      <div class="location">O.P. Jindal School, Tamnar – January 2012</div>
+      <ul class="edu-details">
+        <li>CGPA: 10/10</li>
+      </ul>
+      <ul class="achievement-list">
+        <li>CBSE Zonal Rank 2 in Science Exhibition</li>
+        <li>AIR-1 in National Mathematics Olympiad</li>
+      </ul>
+    </section>
+    <div class="planet"></div>
+  </main>
+</body>
+</html>
+```
